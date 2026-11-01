@@ -27,7 +27,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
   parallel with T03–T08; Claude checks orientation tags and sizes after.)*
 
 ## Phase 1 — Reusable packages
-- [ ] **T03 🔴 `imageprocessing` tests** (known grey values, `Fit` sizes, decode/encode errors).
+- [x] **T03 🔴 `imageprocessing` tests** (known grey values, `Fit` sizes, decode/encode errors).
 - [ ] **T04 🟢 `imageprocessing` implementation.** Verify: `go test -cover ./imageprocessing/` ≥ 90 %.
 - [ ] **T05 🔴 `pipeline` tests** (identical output across modes, failures, order, goroutines, `-race`).
 - [ ] **T06 🟢 `pipeline`: sequential and pipeline modes.** Verify: `go test -race -cover ./pipeline/` ≥ 90 %.
