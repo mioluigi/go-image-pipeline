@@ -107,16 +107,16 @@ These are hypotheses to confirm or refute on the Mac, not targets. *(Review 001 
 
 ## 8. Acceptance criteria (definition of done)
 
-- [ ] AC-1 The original program's build-and-run output is recorded (FR-1).
-- [ ] AC-2 `go test ./...` and `go test -race ./...` pass, including synthetic known-answer tests, every FR-4/FR-5 error case, and the FR-6a goroutine check. `go test -cover` on the reusable packages reports ≥ 90 % for each (NFR-2); its output is saved in `results/`. *(Review 001 #3)*
-- [ ] AC-3 Every mode passes the pixel-identical check against sequential (FR-9).
-- [ ] AC-4 Benchmarks report time, images per second, and allocations for each mode and several image counts (FR-11).
-- [ ] AC-5 Stage timings, CPU and memory profiles are saved and summarized (FR-12, NFR-4).
-- [ ] AC-6 Whole-program wall time and peak memory are reported for each mode (FR-15).
-- [ ] AC-7 The executable runs with no arguments; each error case has a test and a clear message; inputs are never overwritten.
-- [ ] AC-8 Build commands produce a macOS binary, a Windows `.exe`, and a macOS `.app` (Q8). Performance figures come from the Mac.
-- [ ] AC-9 README contains every FR-16 item, with tables generated from `results/`.
-- [ ] AC-10 AI dialog files are in the repository (FR-17).
+- [x] AC-1 The original program's build-and-run output is recorded (FR-1).
+- [x] AC-2 `go test ./...` and `go test -race ./...` pass, including synthetic known-answer tests, every FR-4/FR-5 error case, and the FR-6a goroutine check. `go test -cover` on the reusable packages reports ≥ 90 % for each (NFR-2); its output is saved in `results/`. *(Review 001 #3)*
+- [x] AC-3 Every mode passes the pixel-identical check against sequential (FR-9).
+- [x] AC-4 Benchmarks report time, images per second, and allocations for each mode and several image counts (FR-11).
+- [x] AC-5 Stage timings, CPU and memory profiles are saved and summarized (FR-12, NFR-4).
+- [x] AC-6 Whole-program wall time and peak memory are reported for each mode (FR-15).
+- [x] AC-7 The executable runs with no arguments; each error case has a test and a clear message; inputs are never overwritten.
+- [x] AC-8 Build commands produce a macOS binary, a Windows `.exe`, and a macOS `.app` (Q8). Performance figures come from the Mac.
+- [x] AC-9 README contains every FR-16 item, with tables generated from `results/`.
+- [x] AC-10 AI dialog files are in the repository (FR-17).
 - [ ] AC-11 Repository URL (ending in `.git`) submitted in Canvas.
 
 ## 9. Rubric traceability

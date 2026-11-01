@@ -51,7 +51,8 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
   **GenAI Tools** section for Luis to confirm).
 - [x] **T16 👤 AI dialogs.** Export this Claude conversation and the Gemini reviews to `docs/ai-dialogs/` (PDF).
 - [x] **T17 👤 Gemini review of the repository** against the rubric; Claude triages into `docs/reviews/002-…`.
-- [ ] **T18 👤🤖 Final acceptance** (fresh clone, every AC) **and submit** `https://github.com/mioluigi/go-image-pipeline.git` in Canvas.
+- [x] **T18 👤🤖 Final acceptance** (fresh clone, every AC) **and submit** `https://github.com/mioluigi/go-image-pipeline.git` in Canvas.
+  *Acceptance: 18 of 18 checks passed on a fresh clone of `22157fa` (2026-11-01). Submission in Canvas: Luis (AC-11).*
 
 ## Traceability
 
