@@ -9,7 +9,7 @@ exit code: 0
 
 ## The same four CODEHEIM images: original versus ours (median of 5 runs)
 
-wholeprogram program=original runs=5 median_wall_ms=131.25 median_maxrss_mb=41.7
-wholeprogram program=ours-sequential runs=5 median_wall_ms=195.07 median_maxrss_mb=42.1
-wholeprogram program=ours-pipeline runs=5 median_wall_ms=134.86 median_maxrss_mb=42.7
-wholeprogram program=ours-workers runs=5 median_wall_ms=83.02 median_maxrss_mb=66.8
+wholeprogram program=original runs=5 median_wall_ms=126.19 median_maxrss_mb=41.5
+wholeprogram program=ours-sequential runs=5 median_wall_ms=186.23 median_maxrss_mb=41.9
+wholeprogram program=ours-pipeline runs=5 median_wall_ms=130.86 median_maxrss_mb=42.4
+wholeprogram program=ours-workers runs=5 median_wall_ms=87.27 median_maxrss_mb=66.8

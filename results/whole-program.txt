@@ -1,6 +1,6 @@
-wholeprogram program=sequential-4 runs=5 median_wall_ms=724.19 median_maxrss_mb=171.7
-wholeprogram program=sequential-32 runs=5 median_wall_ms=5621.53 median_maxrss_mb=159.2
-wholeprogram program=pipeline-4 runs=5 median_wall_ms=569.65 median_maxrss_mb=172.7
-wholeprogram program=pipeline-32 runs=5 median_wall_ms=4082.64 median_maxrss_mb=205.1
-wholeprogram program=workers-4 runs=5 median_wall_ms=265.09 median_maxrss_mb=254.8
-wholeprogram program=workers-32 runs=5 median_wall_ms=1473.91 median_maxrss_mb=974.5
+wholeprogram program=sequential-4 runs=5 median_wall_ms=579.97 median_maxrss_mb=166.0
+wholeprogram program=sequential-32 runs=5 median_wall_ms=4559.34 median_maxrss_mb=174.1
+wholeprogram program=pipeline-4 runs=5 median_wall_ms=424.14 median_maxrss_mb=165.2
+wholeprogram program=pipeline-32 runs=5 median_wall_ms=3039.60 median_maxrss_mb=223.0
+wholeprogram program=workers-4 runs=5 median_wall_ms=233.64 median_maxrss_mb=227.9
+wholeprogram program=workers-32 runs=5 median_wall_ms=1288.14 median_maxrss_mb=719.2

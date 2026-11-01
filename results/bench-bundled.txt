@@ -2,20 +2,20 @@ goos: darwin
 goarch: arm64
 pkg: github.com/mioluigi/go-image-pipeline/pipeline
 cpu: Apple M1 Max
-BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 713801431 ns/op	         5.604 images/s	245903861 B/op	  751226 allocs/op
-BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 706015542 ns/op	         5.666 images/s	245902650 B/op	  751221 allocs/op
-BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 707299833 ns/op	         5.655 images/s	245887744 B/op	  751193 allocs/op
-BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 704208305 ns/op	         5.680 images/s	245886400 B/op	  751188 allocs/op
-BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 696848278 ns/op	         5.740 images/s	245887312 B/op	  751191 allocs/op
-BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 554578333 ns/op	         7.213 images/s	245886325 B/op	  751200 allocs/op
-BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 553130111 ns/op	         7.232 images/s	245886904 B/op	  751198 allocs/op
-BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 553932264 ns/op	         7.221 images/s	245885034 B/op	  751195 allocs/op
-BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 560714847 ns/op	         7.134 images/s	245885216 B/op	  751197 allocs/op
-BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 548904083 ns/op	         7.287 images/s	245885066 B/op	  751195 allocs/op
-BenchmarkRunBundled/mode=workers/images=4-10            	       3	 247464278 ns/op	        16.16 images/s	245885272 B/op	  751199 allocs/op
-BenchmarkRunBundled/mode=workers/images=4-10            	       3	 248639180 ns/op	        16.09 images/s	245885197 B/op	  751198 allocs/op
-BenchmarkRunBundled/mode=workers/images=4-10            	       3	 249493639 ns/op	        16.03 images/s	245885154 B/op	  751198 allocs/op
-BenchmarkRunBundled/mode=workers/images=4-10            	       3	 249102958 ns/op	        16.06 images/s	245885197 B/op	  751198 allocs/op
-BenchmarkRunBundled/mode=workers/images=4-10            	       3	 249154222 ns/op	        16.05 images/s	245885384 B/op	  751200 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 576660889 ns/op	         6.936 images/s	223101184 B/op	  703962 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 574068611 ns/op	         6.968 images/s	223098992 B/op	  703957 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 573534583 ns/op	         6.974 images/s	223081045 B/op	  703921 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 566725528 ns/op	         7.058 images/s	223081562 B/op	  703922 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 567597236 ns/op	         7.047 images/s	223080885 B/op	  703920 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 412626708 ns/op	         9.694 images/s	223082160 B/op	  703932 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 413416861 ns/op	         9.675 images/s	223088522 B/op	  703945 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 416199875 ns/op	         9.611 images/s	223081744 B/op	  703933 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 412353778 ns/op	         9.700 images/s	223081685 B/op	  703932 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 407336972 ns/op	         9.820 images/s	223081488 B/op	  703931 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 214145930 ns/op	        18.68 images/s	223081928 B/op	  703936 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 205469500 ns/op	        19.47 images/s	223083424 B/op	  703935 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 209724097 ns/op	        19.07 images/s	223081650 B/op	  703933 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 210608805 ns/op	        18.99 images/s	223081837 B/op	  703935 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 211692847 ns/op	        18.90 images/s	223081762 B/op	  703934 allocs/op
 PASS
-ok  	github.com/mioluigi/go-image-pipeline/pipeline	30.705s
+ok  	github.com/mioluigi/go-image-pipeline/pipeline	24.319s

@@ -1,15 +1,15 @@
-time=2026-11-01T17:15:07.547-05:00 level=INFO msg=starting mode=pipeline images=4 input="the built-in photos" output=dist/output size=500 workers=10
-time=2026-11-01T17:15:08.097-05:00 level=DEBUG msg="image done" image=IMG_2462.jpeg saved=true load=95.864625ms resize=63.245459ms grayscale=3.922708ms save=2.937583ms error=<nil>
-time=2026-11-01T17:15:08.097-05:00 level=DEBUG msg="image done" image=IMG_2553.jpeg saved=true load=138.979709ms resize=63.991208ms grayscale=3.938084ms save=4.27125ms error=<nil>
-time=2026-11-01T17:15:08.097-05:00 level=DEBUG msg="image done" image=IMG_2658.jpeg saved=true load=127.39525ms resize=61.091042ms grayscale=3.853625ms save=4.509416ms error=<nil>
-time=2026-11-01T17:15:08.097-05:00 level=DEBUG msg="image done" image=IMG_2659.jpeg saved=true load=123.429625ms resize=56.603208ms grayscale=3.812292ms save=2.993709ms error=<nil>
-saved  IMG_2462.jpeg  4032x3024 -> 500x375  dist/output/IMG_2462.jpg
-saved  IMG_2553.jpeg  4032x3024 -> 500x375  dist/output/IMG_2553.jpg
-saved  IMG_2658.jpeg  4032x3024 -> 500x375  dist/output/IMG_2658.jpg
-saved  IMG_2659.jpeg  4032x3024 -> 500x375  dist/output/IMG_2659.jpg
+time=2026-11-01T18:02:34.142-05:00 level=INFO msg=starting mode=pipeline images=4 input="the built-in photos" output=dist/output size=500 workers=10
+time=2026-11-01T18:02:34.546-05:00 level=DEBUG msg="image done" image=IMG_2774.jpeg saved=true load=78.974583ms resize=60.962708ms grayscale=3.913125ms save=2.835209ms error=<nil>
+time=2026-11-01T18:02:34.546-05:00 level=DEBUG msg="image done" image=IMG_2846.jpeg saved=true load=94.756208ms resize=62.523666ms grayscale=3.873333ms save=2.897958ms error=<nil>
+time=2026-11-01T18:02:34.546-05:00 level=DEBUG msg="image done" image=IMG_3015.jpeg saved=true load=112.979958ms resize=61.182292ms grayscale=3.882583ms save=3.036292ms error=<nil>
+time=2026-11-01T18:02:34.546-05:00 level=DEBUG msg="image done" image=IMG_portrait.jpg saved=true load=77.975166ms resize=32.95425ms grayscale=2.834917ms save=2.357459ms error=<nil>
+saved  IMG_2774.jpeg     4032x3024 -> 500x375  dist/output/IMG_2774.jpg
+saved  IMG_2846.jpeg     4032x3024 -> 500x375  dist/output/IMG_2846.jpg
+saved  IMG_3015.jpeg     4032x3024 -> 500x375  dist/output/IMG_3015.jpg
+saved  IMG_portrait.jpg  2062x3664 -> 281x500  dist/output/IMG_portrait.jpg
 
-4 saved, 0 failed in 0.55 s (mode pipeline)
-Time in each stage, summed over images: load 0.49 s, resize 0.24 s, grayscale 0.02 s, save 0.01 s
+4 saved, 0 failed in 0.40 s (mode pipeline)
+Time in each stage, summed over images: load 0.36 s, resize 0.22 s, grayscale 0.01 s, save 0.01 s
 (Stages overlap when goroutines are used, so these sums can exceed the total time.)
 Output folder: /Users/levarela/go-image-pipeline/dist/output
-time=2026-11-01T17:15:08.097-05:00 level=INFO msg=finished saved=4 failed=0 elapsed=549.125959ms
+time=2026-11-01T18:02:34.546-05:00 level=INFO msg=finished saved=4 failed=0 elapsed=402.883542ms
