@@ -1,0 +1,70 @@
+// Spike: per-stage times, sequential vs the original 4-stage pipeline, vs N workers.
+package main
+
+import (
+	"bytes"
+	"fmt"
+	"image"
+	"image/jpeg"
+	"os"
+	"runtime"
+	"sort"
+	"sync"
+	"time"
+
+	ip "goroutines_pipeline/image_processing"
+)
+
+func process(data []byte) (d, r, g, e time.Duration) {
+	t := time.Now()
+	img, _, err := image.Decode(bytes.NewReader(data))
+	if err != nil { panic(err) }
+	d = time.Since(t); t = time.Now()
+	img = ip.Resize(img); r = time.Since(t); t = time.Now()
+	img = ip.Grayscale(img); g = time.Since(t); t = time.Now()
+	var buf bytes.Buffer
+	jpeg.Encode(&buf, img, nil); e = time.Since(t)
+	return
+}
+
+func sequential(files [][]byte) { for _, f := range files { process(f) } }
+
+func pipeline(files [][]byte) {
+	c1 := make(chan image.Image)
+	go func() { for _, f := range files { i, _, _ := image.Decode(bytes.NewReader(f)); c1 <- i }; close(c1) }()
+	c2 := make(chan image.Image)
+	go func() { for i := range c1 { c2 <- ip.Resize(i) }; close(c2) }()
+	c3 := make(chan image.Image)
+	go func() { for i := range c2 { c3 <- ip.Grayscale(i) }; close(c3) }()
+	for i := range c3 { var b bytes.Buffer; jpeg.Encode(&b, i, nil) }
+}
+
+func workers(files [][]byte, n int) {
+	jobs := make(chan []byte); var wg sync.WaitGroup
+	for w := 0; w < n; w++ { wg.Add(1); go func() { defer wg.Done(); for f := range jobs { process(f) } }() }
+	for _, f := range files { jobs <- f }; close(jobs); wg.Wait()
+}
+
+func median(f func(), runs int) time.Duration {
+	ts := make([]time.Duration, runs)
+	for i := range ts { t := time.Now(); f(); ts[i] = time.Since(t) }
+	sort.Slice(ts, func(a, b int) bool { return ts[a] < ts[b] })
+	return ts[runs/2]
+}
+
+func main() {
+	var base [][]byte
+	for i := 1; i <= 4; i++ { b, _ := os.ReadFile(fmt.Sprintf("../original/images/image%d.jpeg", i)); base = append(base, b) }
+	fmt.Printf("CPUs=%d GOMAXPROCS=%d %s\n", runtime.NumCPU(), runtime.GOMAXPROCS(0), runtime.Version())
+	var D, R, G, E time.Duration
+	for _, f := range base { d, r, g, e := process(f); D += d; R += r; G += g; E += e }
+	fmt.Printf("stage totals for 4 images: decode %v resize %v grayscale %v encode %v\n", D.Round(time.Millisecond), R.Round(time.Millisecond), G.Round(time.Millisecond), E.Round(time.Millisecond))
+	for _, n := range []int{4, 16, 64} {
+		var files [][]byte
+		for len(files) < n { files = append(files, base...) }
+		s := median(func() { sequential(files) }, 7)
+		p := median(func() { pipeline(files) }, 7)
+		w := median(func() { workers(files, runtime.NumCPU()) }, 7)
+		fmt.Printf("images=%3d sequential %8v pipeline %8v (x%.2f) workers=%d %8v (x%.2f)\n", n, s.Round(time.Millisecond), p.Round(time.Millisecond), float64(s)/float64(p), runtime.NumCPU(), w.Round(time.Millisecond), float64(s)/float64(w))
+	}
+}

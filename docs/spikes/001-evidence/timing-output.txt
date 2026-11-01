@@ -1,0 +1,5 @@
+CPUs=2 GOMAXPROCS=2 go1.24.7
+stage totals for 4 images: decode 170ms resize 241ms grayscale 64ms encode 19ms
+images=  4 sequential    422ms pipeline    287ms (x1.47) workers=2    244ms (x1.73)
+images= 16 sequential   1.638s pipeline   1.124s (x1.46) workers=2   1.008s (x1.63)
+images= 64 sequential   6.765s pipeline   4.668s (x1.45) workers=2   3.933s (x1.72)
