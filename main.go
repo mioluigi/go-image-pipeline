@@ -2,10 +2,38 @@ package main
 
 import (
 	"fmt"
-	imageprocessing "github.com/mioluigi/go-image-pipeline/imageprocessing"
 	"image"
+	"os"
 	"strings"
+
+	"github.com/mioluigi/go-image-pipeline/imageprocessing"
 )
+
+// readImage and writeImage keep CODEHEIM's original behaviour (panic on any
+// error) on top of the new reader/writer API until T10 replaces this program.
+func readImage(path string) image.Image {
+	file, err := os.Open(path)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	img, err := imageprocessing.Decode(file)
+	if err != nil {
+		panic(err)
+	}
+	return img
+}
+
+func writeImage(path string, img image.Image) {
+	file, err := os.Create(path)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	if err := imageprocessing.Encode(file, img); err != nil {
+		panic(err)
+	}
+}
 
 type Job struct {
 	InputPath string
@@ -21,7 +49,7 @@ func loadImage(paths []string) <-chan Job {
 		for _, p := range paths {
 			job := Job{InputPath: p,
 				OutPath: strings.Replace(p, "images/", "images/output/", 1)}
-			job.Image = imageprocessing.ReadImage(p)
+			job.Image = readImage(p)
 			out <- job
 		}
 		close(out)
@@ -35,7 +63,7 @@ func resize(input <-chan Job) <-chan Job {
 		// For each input job, create a new job after resize and add it to
 		// the out channel
 		for job := range input { // Read from the channel
-			job.Image = imageprocessing.Resize(job.Image)
+			job.Image = imageprocessing.Fit(job.Image, 500, 500)
 			out <- job
 		}
 		close(out)
@@ -59,7 +87,7 @@ func saveImage(input <-chan Job) <-chan bool {
 	out := make(chan bool)
 	go func() {
 		for job := range input { // Read from the channel
-			imageprocessing.WriteImage(job.OutPath, job.Image)
+			writeImage(job.OutPath, job.Image)
 			out <- true
 		}
 		close(out)
