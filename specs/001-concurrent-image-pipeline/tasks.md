@@ -50,7 +50,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 - [x] **T15 🤖 README** (what changed from CODEHEIM; tables by script; the ceiling explained; recommendation;
   **GenAI Tools** section for Luis to confirm).
 - [ ] **T16 👤 AI dialogs.** Export this Claude conversation and the Gemini reviews to `docs/ai-dialogs/` (PDF).
-- [ ] **T17 👤 Gemini review of the repository** against the rubric; Claude triages into `docs/reviews/002-…`.
+- [x] **T17 👤 Gemini review of the repository** against the rubric; Claude triages into `docs/reviews/002-…`.
 - [ ] **T18 👤🤖 Final acceptance** (fresh clone, every AC) **and submit** `https://github.com/mioluigi/go-image-pipeline.git` in Canvas.
 
 ## Traceability
