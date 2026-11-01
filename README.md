@@ -277,7 +277,7 @@ Measured figures are in the headline above the results tables; the points below 
 4. **Budget memory alongside speed.** The pool's peak memory was several times the sequential run's, because
    each worker holds a full decoded image. Cap the worker count to the machine's memory, not just its cores.
 5. **Robustness is affordable.** Reporting failures per item, never overwriting inputs, and keeping results in
-   order cost no measurable time against the original.
+   order cost only a few percent of run time against the original on its own images (headline).
 6. **Make concurrent code prove itself before trusting its speed:** identical output to a sequential run, the
    race detector, and a test that no goroutine is left behind — the three gates this project used.
 
