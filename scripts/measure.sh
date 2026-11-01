@@ -33,7 +33,11 @@ for setting in COUNT RUNS; do
 done
 
 # The program embeds images/, so Go cannot build it without at least one photo there.
-if ! ls images/*.jpg images/*.jpeg images/*.png images/*.JPG images/*.JPEG images/*.PNG >/dev/null 2>&1; then
+photo_count=0
+shopt -s nullglob nocaseglob # count .jpg, .JPG, …; a pattern matching nothing adds nothing
+for photo in images/*.jpg images/*.jpeg images/*.png; do photo_count=$((photo_count + 1)); done
+shopt -u nullglob nocaseglob
+if [[ "$photo_count" -eq 0 ]]; then
   echo "measure.sh: images/ has no .jpg, .jpeg or .png photos; add them first (task T02)" >&2
   exit 2
 fi
