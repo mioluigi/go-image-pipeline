@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	imageprocessing "goroutines_pipeline/image_processing"
+	imageprocessing "github.com/mioluigi/go-image-pipeline/imageprocessing"
 	"image"
 	"strings"
 )

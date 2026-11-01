@@ -19,3 +19,8 @@
 
 # Go workspace file
 go.work
+
+# Project (Week 6): program output, builds, profiles
+output/
+dist/
+*.prof
