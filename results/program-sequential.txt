@@ -1,0 +1,14 @@
+time=2026-11-01T17:15:06.819-05:00 level=INFO msg=starting mode=sequential images=4 input="the built-in photos" output=dist/output size=500 workers=10
+time=2026-11-01T17:15:07.535-05:00 level=DEBUG msg="image done" image=IMG_2462.jpeg saved=true load=98.710416ms resize=53.097083ms grayscale=3.797583ms save=2.430708ms error=<nil>
+time=2026-11-01T17:15:07.535-05:00 level=DEBUG msg="image done" image=IMG_2553.jpeg saved=true load=138.895083ms resize=50.053167ms grayscale=3.7505ms save=3.005917ms error=<nil>
+time=2026-11-01T17:15:07.535-05:00 level=DEBUG msg="image done" image=IMG_2658.jpeg saved=true load=125.370875ms resize=53.381458ms grayscale=3.740334ms save=3.046292ms error=<nil>
+time=2026-11-01T17:15:07.535-05:00 level=DEBUG msg="image done" image=IMG_2659.jpeg saved=true load=120.981667ms resize=49.333291ms grayscale=3.810666ms save=2.822417ms error=<nil>
+saved  IMG_2462.jpeg  4032x3024 -> 500x375  dist/output/IMG_2462.jpg
+saved  IMG_2553.jpeg  4032x3024 -> 500x375  dist/output/IMG_2553.jpg
+saved  IMG_2658.jpeg  4032x3024 -> 500x375  dist/output/IMG_2658.jpg
+saved  IMG_2659.jpeg  4032x3024 -> 500x375  dist/output/IMG_2659.jpg
+
+4 saved, 0 failed in 0.72 s (mode sequential)
+Time in each stage, summed over images: load 0.48 s, resize 0.21 s, grayscale 0.02 s, save 0.01 s
+Output folder: /Users/levarela/go-image-pipeline/dist/output
+time=2026-11-01T17:15:07.536-05:00 level=INFO msg=finished saved=4 failed=0 elapsed=716.380542ms

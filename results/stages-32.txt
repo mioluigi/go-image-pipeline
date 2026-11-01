@@ -1,0 +1,70 @@
+time=2026-11-01T17:15:08.764-05:00 level=INFO msg=starting mode=sequential images=32 input=dist/many output=dist/many-output size=500 workers=10
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy1-IMG_2462.jpeg saved=true load=104.360542ms resize=52.142625ms grayscale=3.789792ms save=2.383375ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy1-IMG_2553.jpeg saved=true load=142.321916ms resize=54.126292ms grayscale=3.858584ms save=2.983167ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy1-IMG_2658.jpeg saved=true load=130.866458ms resize=62.161083ms grayscale=3.74025ms save=2.94075ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy1-IMG_2659.jpeg saved=true load=132.05575ms resize=49.397292ms grayscale=3.8045ms save=2.762958ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy2-IMG_2462.jpeg saved=true load=98.955333ms resize=61.1055ms grayscale=3.711416ms save=2.505333ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy2-IMG_2553.jpeg saved=true load=138.869833ms resize=46.203458ms grayscale=3.734292ms save=2.924041ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy2-IMG_2658.jpeg saved=true load=128.840334ms resize=47.294125ms grayscale=3.745375ms save=3.070583ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy2-IMG_2659.jpeg saved=true load=126.303125ms resize=48.598583ms grayscale=3.95325ms save=2.93575ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy3-IMG_2462.jpeg saved=true load=100.435459ms resize=49.60925ms grayscale=3.722917ms save=2.394ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy3-IMG_2553.jpeg saved=true load=138.455292ms resize=48.297ms grayscale=3.732542ms save=2.844375ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy3-IMG_2658.jpeg saved=true load=127.287208ms resize=47.033ms grayscale=3.737542ms save=2.95775ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy3-IMG_2659.jpeg saved=true load=124.06125ms resize=47.285792ms grayscale=3.814041ms save=2.814083ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy4-IMG_2462.jpeg saved=true load=98.506375ms resize=49.540292ms grayscale=3.736ms save=2.337459ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy4-IMG_2553.jpeg saved=true load=138.916333ms resize=48.825125ms grayscale=3.730583ms save=2.838083ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy4-IMG_2658.jpeg saved=true load=127.632833ms resize=52.778459ms grayscale=3.735ms save=2.913125ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy4-IMG_2659.jpeg saved=true load=123.651167ms resize=52.378542ms grayscale=3.794167ms save=2.798583ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy5-IMG_2462.jpeg saved=true load=99.998291ms resize=48.079959ms grayscale=3.75575ms save=2.635167ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy5-IMG_2553.jpeg saved=true load=139.70425ms resize=47.059166ms grayscale=3.735042ms save=2.907ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy5-IMG_2658.jpeg saved=true load=127.753375ms resize=47.775917ms grayscale=3.73075ms save=2.896959ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy5-IMG_2659.jpeg saved=true load=123.62ms resize=46.188125ms grayscale=3.812167ms save=2.758166ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy6-IMG_2462.jpeg saved=true load=99.082417ms resize=47.430167ms grayscale=3.791833ms save=2.361834ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy6-IMG_2553.jpeg saved=true load=138.572208ms resize=48.240875ms grayscale=3.736417ms save=2.852ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy6-IMG_2658.jpeg saved=true load=128.470083ms resize=46.788333ms grayscale=3.735833ms save=3.009875ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy6-IMG_2659.jpeg saved=true load=124.944125ms resize=51.017833ms grayscale=3.805083ms save=2.85225ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy7-IMG_2462.jpeg saved=true load=99.310708ms resize=47.32775ms grayscale=3.708166ms save=2.31425ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy7-IMG_2553.jpeg saved=true load=138.753709ms resize=47.390542ms grayscale=3.736917ms save=2.936208ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy7-IMG_2658.jpeg saved=true load=128.287542ms resize=47.840958ms grayscale=3.73475ms save=2.929417ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy7-IMG_2659.jpeg saved=true load=124.816209ms resize=47.530208ms grayscale=3.82425ms save=2.802667ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy8-IMG_2462.jpeg saved=true load=100.198917ms resize=46.735791ms grayscale=3.713083ms save=2.344542ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy8-IMG_2553.jpeg saved=true load=138.615ms resize=45.690416ms grayscale=3.851875ms save=2.921083ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy8-IMG_2658.jpeg saved=true load=127.651625ms resize=47.192333ms grayscale=3.743834ms save=2.96725ms error=<nil>
+time=2026-11-01T17:15:14.499-05:00 level=DEBUG msg="image done" image=copy8-IMG_2659.jpeg saved=true load=124.596417ms resize=50.207625ms grayscale=3.821792ms save=2.800834ms error=<nil>
+saved  copy1-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy1-IMG_2462.jpg
+saved  copy1-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy1-IMG_2553.jpg
+saved  copy1-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy1-IMG_2658.jpg
+saved  copy1-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy1-IMG_2659.jpg
+saved  copy2-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy2-IMG_2462.jpg
+saved  copy2-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy2-IMG_2553.jpg
+saved  copy2-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy2-IMG_2658.jpg
+saved  copy2-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy2-IMG_2659.jpg
+saved  copy3-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy3-IMG_2462.jpg
+saved  copy3-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy3-IMG_2553.jpg
+saved  copy3-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy3-IMG_2658.jpg
+saved  copy3-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy3-IMG_2659.jpg
+saved  copy4-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy4-IMG_2462.jpg
+saved  copy4-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy4-IMG_2553.jpg
+saved  copy4-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy4-IMG_2658.jpg
+saved  copy4-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy4-IMG_2659.jpg
+saved  copy5-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy5-IMG_2462.jpg
+saved  copy5-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy5-IMG_2553.jpg
+saved  copy5-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy5-IMG_2658.jpg
+saved  copy5-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy5-IMG_2659.jpg
+saved  copy6-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy6-IMG_2462.jpg
+saved  copy6-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy6-IMG_2553.jpg
+saved  copy6-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy6-IMG_2658.jpg
+saved  copy6-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy6-IMG_2659.jpg
+saved  copy7-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy7-IMG_2462.jpg
+saved  copy7-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy7-IMG_2553.jpg
+saved  copy7-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy7-IMG_2658.jpg
+saved  copy7-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy7-IMG_2659.jpg
+saved  copy8-IMG_2462.jpeg  4032x3024 -> 500x375  dist/many-output/copy8-IMG_2462.jpg
+saved  copy8-IMG_2553.jpeg  4032x3024 -> 500x375  dist/many-output/copy8-IMG_2553.jpg
+saved  copy8-IMG_2658.jpeg  4032x3024 -> 500x375  dist/many-output/copy8-IMG_2658.jpg
+saved  copy8-IMG_2659.jpeg  4032x3024 -> 500x375  dist/many-output/copy8-IMG_2659.jpg
+
+32 saved, 0 failed in 5.73 s (mode sequential)
+Time in each stage, summed over images: load 3.95 s, resize 1.58 s, grayscale 0.12 s, save 0.09 s
+Output folder: /Users/levarela/go-image-pipeline/dist/many-output
+time=2026-11-01T17:15:14.500-05:00 level=INFO msg=finished saved=32 failed=0 elapsed=5.73464825s

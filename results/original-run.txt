@@ -1,0 +1,15 @@
+## CODEHEIM's program, commit 40f5842, unchanged
+
+$ go build -o pipeline . && ./pipeline
+Success!
+Success!
+Success!
+Success!
+exit code: 0
+
+## The same four CODEHEIM images: original versus ours (median of 5 runs)
+
+wholeprogram program=original runs=5 median_wall_ms=131.25 median_maxrss_mb=41.7
+wholeprogram program=ours-sequential runs=5 median_wall_ms=195.07 median_maxrss_mb=42.1
+wholeprogram program=ours-pipeline runs=5 median_wall_ms=134.86 median_maxrss_mb=42.7
+wholeprogram program=ours-workers runs=5 median_wall_ms=83.02 median_maxrss_mb=66.8

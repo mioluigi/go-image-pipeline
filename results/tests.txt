@@ -1,0 +1,4 @@
+ok  	github.com/mioluigi/go-image-pipeline	11.855s	coverage: 96.1% of statements
+ok  	github.com/mioluigi/go-image-pipeline/cmd/measure	5.414s	coverage: 93.0% of statements
+ok  	github.com/mioluigi/go-image-pipeline/imageprocessing	1.343s	coverage: 100.0% of statements
+ok  	github.com/mioluigi/go-image-pipeline/pipeline	2.325s	coverage: 100.0% of statements

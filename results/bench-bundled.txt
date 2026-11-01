@@ -1,0 +1,21 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/mioluigi/go-image-pipeline/pipeline
+cpu: Apple M1 Max
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 713801431 ns/op	         5.604 images/s	245903861 B/op	  751226 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 706015542 ns/op	         5.666 images/s	245902650 B/op	  751221 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 707299833 ns/op	         5.655 images/s	245887744 B/op	  751193 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 704208305 ns/op	         5.680 images/s	245886400 B/op	  751188 allocs/op
+BenchmarkRunBundled/mode=sequential/images=4-10         	       3	 696848278 ns/op	         5.740 images/s	245887312 B/op	  751191 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 554578333 ns/op	         7.213 images/s	245886325 B/op	  751200 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 553130111 ns/op	         7.232 images/s	245886904 B/op	  751198 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 553932264 ns/op	         7.221 images/s	245885034 B/op	  751195 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 560714847 ns/op	         7.134 images/s	245885216 B/op	  751197 allocs/op
+BenchmarkRunBundled/mode=pipeline/images=4-10           	       3	 548904083 ns/op	         7.287 images/s	245885066 B/op	  751195 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 247464278 ns/op	        16.16 images/s	245885272 B/op	  751199 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 248639180 ns/op	        16.09 images/s	245885197 B/op	  751198 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 249493639 ns/op	        16.03 images/s	245885154 B/op	  751198 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 249102958 ns/op	        16.06 images/s	245885197 B/op	  751198 allocs/op
+BenchmarkRunBundled/mode=workers/images=4-10            	       3	 249154222 ns/op	        16.05 images/s	245885384 B/op	  751200 allocs/op
+PASS
+ok  	github.com/mioluigi/go-image-pipeline/pipeline	30.705s

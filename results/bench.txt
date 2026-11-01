@@ -1,0 +1,51 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/mioluigi/go-image-pipeline/pipeline
+cpu: Apple M1 Max
+BenchmarkRun/mode=sequential/images=4-10         	       3	 166243875 ns/op	        24.06 images/s	41601536 B/op	  666339 allocs/op
+BenchmarkRun/mode=sequential/images=4-10         	       3	 166124861 ns/op	        24.08 images/s	41603296 B/op	  666341 allocs/op
+BenchmarkRun/mode=sequential/images=4-10         	       3	 177133736 ns/op	        22.58 images/s	41587072 B/op	  666310 allocs/op
+BenchmarkRun/mode=sequential/images=4-10         	       3	 176459486 ns/op	        22.67 images/s	41590149 B/op	  666316 allocs/op
+BenchmarkRun/mode=sequential/images=4-10         	       3	 174423333 ns/op	        22.93 images/s	41587082 B/op	  666310 allocs/op
+BenchmarkRun/mode=sequential/images=16-10        	       3	 671283375 ns/op	        23.83 images/s	166344245 B/op	 2665216 allocs/op
+BenchmarkRun/mode=sequential/images=16-10        	       3	 660868597 ns/op	        24.21 images/s	166344602 B/op	 2665217 allocs/op
+BenchmarkRun/mode=sequential/images=16-10        	       3	 665959722 ns/op	        24.03 images/s	166342794 B/op	 2665214 allocs/op
+BenchmarkRun/mode=sequential/images=16-10        	       3	 736946875 ns/op	        21.71 images/s	166343434 B/op	 2665216 allocs/op
+BenchmarkRun/mode=sequential/images=16-10        	       3	 660308903 ns/op	        24.23 images/s	166342773 B/op	 2665214 allocs/op
+BenchmarkRun/mode=sequential/images=64-10        	       3	2645500931 ns/op	        24.19 images/s	665369861 B/op	10660844 allocs/op
+BenchmarkRun/mode=sequential/images=64-10        	       3	2661387694 ns/op	        24.05 images/s	665368912 B/op	10660845 allocs/op
+BenchmarkRun/mode=sequential/images=64-10        	       3	2654552556 ns/op	        24.11 images/s	665370240 B/op	10660847 allocs/op
+BenchmarkRun/mode=sequential/images=64-10        	       3	2644604875 ns/op	        24.20 images/s	665370090 B/op	10660846 allocs/op
+BenchmarkRun/mode=sequential/images=64-10        	       3	2655502847 ns/op	        24.10 images/s	665372224 B/op	10660849 allocs/op
+BenchmarkRun/mode=pipeline/images=4-10           	       3	 123792542 ns/op	        32.31 images/s	41586629 B/op	  666317 allocs/op
+BenchmarkRun/mode=pipeline/images=4-10           	       3	 129489694 ns/op	        30.89 images/s	41586688 B/op	  666318 allocs/op
+BenchmarkRun/mode=pipeline/images=4-10           	       3	 125997486 ns/op	        31.75 images/s	41588477 B/op	  666320 allocs/op
+BenchmarkRun/mode=pipeline/images=4-10           	       3	 126217986 ns/op	        31.69 images/s	41586576 B/op	  666317 allocs/op
+BenchmarkRun/mode=pipeline/images=4-10           	       3	 126220000 ns/op	        31.69 images/s	41586592 B/op	  666317 allocs/op
+BenchmarkRun/mode=pipeline/images=16-10          	       3	 449107083 ns/op	        35.63 images/s	166343082 B/op	 2665223 allocs/op
+BenchmarkRun/mode=pipeline/images=16-10          	       3	 448769347 ns/op	        35.65 images/s	166343173 B/op	 2665224 allocs/op
+BenchmarkRun/mode=pipeline/images=16-10          	       3	 448712570 ns/op	        35.66 images/s	166343200 B/op	 2665224 allocs/op
+BenchmarkRun/mode=pipeline/images=16-10          	       3	 451430639 ns/op	        35.44 images/s	166343258 B/op	 2665223 allocs/op
+BenchmarkRun/mode=pipeline/images=16-10          	       3	 449704875 ns/op	        35.58 images/s	166343258 B/op	 2665223 allocs/op
+BenchmarkRun/mode=pipeline/images=64-10          	       3	1755676680 ns/op	        36.45 images/s	665369178 B/op	10660849 allocs/op
+BenchmarkRun/mode=pipeline/images=64-10          	       3	1770402722 ns/op	        36.15 images/s	665369328 B/op	10660851 allocs/op
+BenchmarkRun/mode=pipeline/images=64-10          	       3	1755732778 ns/op	        36.45 images/s	665370602 B/op	10660851 allocs/op
+BenchmarkRun/mode=pipeline/images=64-10          	       3	1761284417 ns/op	        36.34 images/s	665369034 B/op	10660849 allocs/op
+BenchmarkRun/mode=pipeline/images=64-10          	       3	1763969278 ns/op	        36.28 images/s	665368912 B/op	10660847 allocs/op
+BenchmarkRun/mode=workers/images=4-10            	       3	  57835347 ns/op	        69.17 images/s	41587229 B/op	  666324 allocs/op
+BenchmarkRun/mode=workers/images=4-10            	       3	  56681347 ns/op	        70.57 images/s	41586850 B/op	  666321 allocs/op
+BenchmarkRun/mode=workers/images=4-10            	       3	  58163222 ns/op	        68.77 images/s	41586893 B/op	  666321 allocs/op
+BenchmarkRun/mode=workers/images=4-10            	       3	  58792361 ns/op	        68.04 images/s	41586898 B/op	  666321 allocs/op
+BenchmarkRun/mode=workers/images=4-10            	       3	  60020847 ns/op	        66.64 images/s	41586893 B/op	  666321 allocs/op
+BenchmarkRun/mode=workers/images=16-10           	       3	 156776042 ns/op	       102.1 images/s	166350658 B/op	 2665237 allocs/op
+BenchmarkRun/mode=workers/images=16-10           	       3	 160969945 ns/op	        99.40 images/s	166343346 B/op	 2665227 allocs/op
+BenchmarkRun/mode=workers/images=16-10           	       3	 156185278 ns/op	       102.4 images/s	166343682 B/op	 2665230 allocs/op
+BenchmarkRun/mode=workers/images=16-10           	       3	 143908542 ns/op	       111.2 images/s	166343394 B/op	 2665227 allocs/op
+BenchmarkRun/mode=workers/images=16-10           	       3	 165123542 ns/op	        96.90 images/s	166343586 B/op	 2665229 allocs/op
+BenchmarkRun/mode=workers/images=64-10           	       3	 569094472 ns/op	       112.5 images/s	665369101 B/op	10660851 allocs/op
+BenchmarkRun/mode=workers/images=64-10           	       3	 573403306 ns/op	       111.6 images/s	665370784 B/op	10660853 allocs/op
+BenchmarkRun/mode=workers/images=64-10           	       3	 549670306 ns/op	       116.4 images/s	665369042 B/op	10660851 allocs/op
+BenchmarkRun/mode=workers/images=64-10           	       3	 553238514 ns/op	       115.7 images/s	665369357 B/op	10660853 allocs/op
+BenchmarkRun/mode=workers/images=64-10           	       3	 551150556 ns/op	       116.1 images/s	665371429 B/op	10660858 allocs/op
+PASS
+ok  	github.com/mioluigi/go-image-pipeline/pipeline	133.889s
