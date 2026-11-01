@@ -24,3 +24,4 @@ go.work
 output/
 dist/
 *.prof
+.DS_Store

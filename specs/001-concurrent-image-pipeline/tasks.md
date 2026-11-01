@@ -22,7 +22,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
   `CLAUDE.md`; `.gitignore` (`output/`, `dist/`, `*.out`, `*.prof`, `*.test`); `docs/decisions.md`;
   remove CODEHEIM's committed `images/output/`.
   Verify: `go build ./... && go vet ./...`.
-- [ ] **T02 👤 Photos (Q2).** Four of your own: Photos → File → Export → JPEG, ≤ 5 MB each, at least one
+- [x] **T02 👤 Photos (Q2).** Four of your own: Photos → File → Export → JPEG, ≤ 5 MB each, at least one
   landscape and one portrait. Drop them in `images/` replacing CODEHEIM's four; commit. *(Can run in
   parallel with T03–T08; Claude checks orientation tags and sizes after.)*
 
@@ -40,7 +40,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 
 ## Phase 3 — Measurement
 - [x] **T11 🤖 `scripts/run-original.sh`, `cmd/measure` (from Week 5) ✂︎ second cut, `scripts/measure.sh`, `scripts/tables.sh`.**
-- [ ] **T12 👤 Run `scripts/measure.sh` on the Mac** (plugged in, apps closed); commit `results/`.
+- [x] **T12 👤 Run `scripts/measure.sh` on the Mac** (plugged in, apps closed); commit `results/`.
 
 ## Phase 4 — Executables
 - [x] **T13 🤖 `scripts/build.sh`, `scripts/build-macos-app.sh`.**
