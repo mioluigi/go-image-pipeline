@@ -39,7 +39,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 - [x] **T10 🟢 `main.go`** with embedded images, flags, messages, exit codes.
 
 ## Phase 3 — Measurement
-- [ ] **T11 🤖 `scripts/run-original.sh`, `cmd/measure` (from Week 5) ✂︎ second cut, `scripts/measure.sh`, `scripts/tables.sh`.**
+- [x] **T11 🤖 `scripts/run-original.sh`, `cmd/measure` (from Week 5) ✂︎ second cut, `scripts/measure.sh`, `scripts/tables.sh`.**
 - [ ] **T12 👤 Run `scripts/measure.sh` on the Mac** (plugged in, apps closed); commit `results/`.
 
 ## Phase 4 — Executables
