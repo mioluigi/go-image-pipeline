@@ -2,8 +2,8 @@
 
 | Field | Value |
 |---|---|
-| Status | **DRAFT — 2026-11-01** |
-| Implements | `plan.md` → `spec.md` (draft v2) |
+| Status | **APPROVED — 2026-11-01** |
+| Implements | `plan.md` → `spec.md` (APPROVED v2) |
 
 **How to work this list:** one task = one commit (message starts with the task ID). 🔴 tasks write tests that
 must fail first; 🟢 tasks make them pass. 🤖 Claude writes and pushes · 👤 Luis (anything on the Mac:
@@ -16,7 +16,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 ---
 
 ## Phase 0 — Approval and setup
-- [ ] **T00 👤 Approve** spec v2 (answer Q1–Q10), this plan, and this list; **create the empty GitHub repo**
+- [x] **T00 👤 Approve** spec v2 (answer Q1–Q10), this plan, and this list; **create the empty GitHub repo**
   `mioluigi/go-image-pipeline` (no README, licence, or .gitignore). Claude then pushes the history.
 - [ ] **T01 🤖 Scaffolding.** Module path and `go 1.22`; rename `image_processing/` → `imageprocessing/`;
   `CLAUDE.md`; `.gitignore` (`output/`, `dist/`, `*.out`, `*.prof`, `*.test`); `docs/decisions.md`;

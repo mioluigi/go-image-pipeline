@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | **DRAFT v2 — 2026-11-01** (after Gemini review: `docs/reviews/001-spec-review.md`; awaiting Luis's decisions in section 11) |
+| Status | **APPROVED v2 — 2026-11-01** (review: `docs/reviews/001-spec-review.md`; decisions: section 11) |
 | Owner | Luis Varela |
 | Course deliverable | Week 6 Assignment: Data Pipelines with Concurrency (100 pts) |
 | Governing rules | `docs/constitution.md` · requirements: `docs/assignment-and-rubric.md` |
@@ -159,9 +159,9 @@ Cut in this order, recording each cut in `docs/decisions.md` and the README's li
 
 Not cut: error handling, tests, benchmarks, the sequential-versus-pipeline comparison, executables, README.
 
-## 11. Decisions — **for Luis** (recommendation in bold)
+## 11. Decisions — **approved by Luis, 2026-11-01** (all as recommended, in bold)
 
-| # | Question | Options | Recommendation |
+| # | Question | Options | Decision |
 |---|---|---|---|
 | Q1 | Repository | (a) new repo, keep CODEHEIM's 3 commits + `LICENSE`, CODEHEIM as `upstream` remote; (b) GitHub "fork"; (c) fresh repo, code copied | **(a) `github.com/mioluigi/go-image-pipeline`** — the assignment says *clone*; history shows exactly what we changed; Apache-2.0 respected. |
 | Q2 | Our images | Count, source, sizes | **Four of Luis's own photos** (no third-party rights), at least **two non-square** (landscape and portrait) to show the aspect-ratio fix, each ≤ 5 MB, **EXIF orientation checked** (re-saved upright if needed); EXIF handling itself stays out of scope and is noted in the README. |

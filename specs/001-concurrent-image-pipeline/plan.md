@@ -2,8 +2,8 @@
 
 | Field | Value |
 |---|---|
-| Status | **DRAFT — 2026-11-01** (assumes the section 11 recommendations Q1–Q10; any different answer is applied here before approval) |
-| Implements | `spec.md` (draft v2) |
+| Status | **APPROVED — 2026-11-01** |
+| Implements | `spec.md` (APPROVED v2) |
 | Governing rules | `docs/constitution.md` |
 | Evidence | `docs/spikes/001-original-pipeline.md`, `docs/reviews/001-spec-review.md` |
 
