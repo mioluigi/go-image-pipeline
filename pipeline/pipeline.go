@@ -95,6 +95,26 @@ func OutputName(inputName string) string {
 	return strings.TrimSuffix(base, path.Ext(base)) + ".jpg"
 }
 
+// ImageNames lists the JPEG and PNG files at the top level of folder, in
+// lexical order; subfolders and other files are ignored.
+func ImageNames(folder fs.FS) ([]string, error) {
+	entries, err := fs.ReadDir(folder, ".")
+	if err != nil {
+		return nil, err
+	}
+	var names []string
+	for _, entry := range entries {
+		if entry.IsDir() {
+			continue
+		}
+		switch strings.ToLower(path.Ext(entry.Name())) {
+		case ".jpg", ".jpeg", ".png":
+			names = append(names, entry.Name())
+		}
+	}
+	return names, nil
+}
+
 // Run processes the named files of inputs in the given mode and returns one
 // Result per name, in the same order. The error is non-nil only when the run
 // cannot start (unknown mode, invalid size, output folder cannot be created);

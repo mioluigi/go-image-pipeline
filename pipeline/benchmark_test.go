@@ -6,8 +6,6 @@ import (
 	"image/jpeg"
 	"io/fs"
 	"os"
-	"path"
-	"strings"
 	"sync"
 	"testing"
 	"testing/fstest"
@@ -82,7 +80,7 @@ func BenchmarkRun(b *testing.B) {
 // the ones the program ships with.
 func BenchmarkRunBundled(b *testing.B) {
 	inputs := os.DirFS("../images")
-	names, err := imageNames(inputs)
+	names, err := pipeline.ImageNames(inputs)
 	if err != nil || len(names) == 0 {
 		b.Skipf("no bundled images in ../images (%v)", err)
 	}
@@ -91,20 +89,4 @@ func BenchmarkRunBundled(b *testing.B) {
 			benchmarkRun(b, mode, inputs, names)
 		})
 	}
-}
-
-// imageNames lists the JPEG and PNG files at the top of a folder.
-func imageNames(folder fs.FS) ([]string, error) {
-	entries, err := fs.ReadDir(folder, ".")
-	if err != nil {
-		return nil, err
-	}
-	var names []string
-	for _, entry := range entries {
-		switch strings.ToLower(path.Ext(entry.Name())) {
-		case ".jpg", ".jpeg", ".png":
-			names = append(names, entry.Name())
-		}
-	}
-	return names, nil
 }

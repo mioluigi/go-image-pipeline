@@ -113,7 +113,7 @@ func TestEveryModeRuns(t *testing.T) {
 			if code != 0 {
 				t.Fatalf("exit code %d\n%s\n%s", code, stdout, stderr)
 			}
-			if !strings.Contains(stdout, "3 saved, 0 failed") || !strings.Contains(stdout, "40 × 30") {
+			if !strings.Contains(stdout, "3 saved, 0 failed") || !strings.Contains(stdout, "40x30") {
 				t.Errorf("unexpected output:\n%s", stdout)
 			}
 			if mode == "workers" && !strings.Contains(stdout, "2 workers") {

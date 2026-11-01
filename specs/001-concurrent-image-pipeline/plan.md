@@ -121,6 +121,9 @@ written with `os.Create` into `cfg.OutputDir`, created with `os.MkdirAll` at the
 
 Mutation checks (Constitution 3.1) on: the `Err` pass-through, the index placement, and the out == in check.
 
+> **Note (decision log, 2026-11-01):** the program-level tests call `run(args, stdout, stderr)` in-process rather
+> through `os/exec`; and the image listing became `pipeline.ImageNames`, shared by the program and the benchmarks.
+
 ## 7. Performance measurement design
 
 - **Benchmarks** (`pipeline/benchmark_test.go`): `BenchmarkRun/mode=…/images=4,16,64` on synthetic 1536 × 1024

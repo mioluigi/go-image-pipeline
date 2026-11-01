@@ -36,7 +36,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 
 ## Phase 2 — The program
 - [x] **T09 🔴 End-to-end tests** for the program (no args; exit 2 cases; exit 1 with a corrupt file; inputs unchanged).
-- [ ] **T10 🟢 `main.go`** with embedded images, flags, messages, exit codes.
+- [x] **T10 🟢 `main.go`** with embedded images, flags, messages, exit codes.
 
 ## Phase 3 — Measurement
 - [ ] **T11 🤖 `scripts/run-original.sh`, `cmd/measure` (from Week 5) ✂︎ second cut, `scripts/measure.sh`, `scripts/tables.sh`.**

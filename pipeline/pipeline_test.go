@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"testing"
 	"testing/fstest"
 	"time"
@@ -329,5 +330,25 @@ func TestOutputName(t *testing.T) {
 		if got := pipeline.OutputName(input); got != want {
 			t.Errorf("OutputName(%q) = %q, want %q", input, got, want)
 		}
+	}
+}
+
+func TestImageNames(t *testing.T) {
+	folder := fstest.MapFS{
+		"b.JPG":            {Data: []byte("x")},
+		"a.png":            {Data: []byte("x")},
+		"c.jpeg":           {Data: []byte("x")},
+		"notes.txt":        {Data: []byte("x")},
+		"folder.jpg/x.jpg": {Data: []byte("x")},
+	}
+	names, err := pipeline.ImageNames(folder)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got := strings.Join(names, ","); got != "a.png,b.JPG,c.jpeg" {
+		t.Errorf("ImageNames = %s, want a.png,b.JPG,c.jpeg", got)
+	}
+	if _, err := pipeline.ImageNames(os.DirFS(filepath.Join(t.TempDir(), "missing"))); err == nil {
+		t.Error("a missing folder was listed without error")
 	}
 }
