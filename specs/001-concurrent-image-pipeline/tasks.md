@@ -44,7 +44,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 
 ## Phase 4 — Executables
 - [x] **T13 🤖 `scripts/build.sh`, `scripts/build-macos-app.sh`.**
-- [ ] **T14 👤 Build all three; double-click the `.app`.**
+- [x] **T14 👤 Build all three; double-click the `.app`.**
 
 ## Phase 5 — Documentation and submission
 - [x] **T15 🤖 README** (what changed from CODEHEIM; tables by script; the ceiling explained; recommendation;
