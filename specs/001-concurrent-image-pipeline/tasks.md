@@ -32,7 +32,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 - [x] **T05 🔴 `pipeline` tests** (identical output across modes, failures, order, goroutines, `-race`).
 - [x] **T06 🟢 `pipeline`: sequential and pipeline modes.** Verify: `go test -race -cover ./pipeline/` ≥ 90 %.
 - [x] **T07 🔴🟢 `pipeline`: workers mode.** ✂︎ first cut.
-- [ ] **T08 🤖 Benchmarks** (`BenchmarkRun`, `BenchmarkRunBundled`; images/s; allocations).
+- [x] **T08 🤖 Benchmarks** (`BenchmarkRun`, `BenchmarkRunBundled`; images/s; allocations).
 
 ## Phase 2 — The program
 - [ ] **T09 🔴 End-to-end tests** for the program (no args; exit 2 cases; exit 1 with a corrupt file; inputs unchanged).
