@@ -35,7 +35,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 - [x] **T08 🤖 Benchmarks** (`BenchmarkRun`, `BenchmarkRunBundled`; images/s; allocations).
 
 ## Phase 2 — The program
-- [ ] **T09 🔴 End-to-end tests** for the program (no args; exit 2 cases; exit 1 with a corrupt file; inputs unchanged).
+- [x] **T09 🔴 End-to-end tests** for the program (no args; exit 2 cases; exit 1 with a corrupt file; inputs unchanged).
 - [ ] **T10 🟢 `main.go`** with embedded images, flags, messages, exit codes.
 
 ## Phase 3 — Measurement
