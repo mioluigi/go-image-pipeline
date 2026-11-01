@@ -1,5 +1,10 @@
 package pipeline
 
+import (
+	"runtime"
+	"sync"
+)
+
 // runSequential processes one image at a time, all four stages, in the
 // caller's goroutine: the "without goroutines" baseline.
 func runSequential(s stages, names []string, collect func(job)) {
@@ -47,4 +52,45 @@ func startStage(input <-chan job, step func(job) job) <-chan job {
 		}
 	}()
 	return output
+}
+
+// runWorkers starts a pool of goroutines; each takes the next image and runs
+// all four stages on it. Unlike the pipeline, its speed-up is not capped by
+// the slowest stage: it grows with the number of workers until the CPUs (or
+// memory and disk) are saturated. Images finish in any order; the index in
+// each job lets Run put the results back in input order.
+func runWorkers(s stages, names []string, collect func(job)) {
+	pending := make(chan job)
+	finished := make(chan job)
+	var running sync.WaitGroup
+	for range s.workerCount() {
+		running.Add(1)
+		go func() {
+			defer running.Done()
+			for j := range pending {
+				finished <- s.process(j)
+			}
+		}()
+	}
+	go func() { // feed the pool, then tell the workers there is no more work
+		defer close(pending)
+		for index, name := range names {
+			pending <- newJob(index, name)
+		}
+	}()
+	go func() { // close finished only after the last worker has sent its job
+		running.Wait()
+		close(finished)
+	}()
+	for j := range finished {
+		collect(j)
+	}
+}
+
+// workerCount is Config.Workers, or one worker per CPU when it is below 1.
+func (s stages) workerCount() int {
+	if s.cfg.Workers < 1 {
+		return runtime.NumCPU()
+	}
+	return s.cfg.Workers
 }

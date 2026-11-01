@@ -31,7 +31,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 - [x] **T04 🟢 `imageprocessing` implementation.** Verify: `go test -cover ./imageprocessing/` ≥ 90 %.
 - [x] **T05 🔴 `pipeline` tests** (identical output across modes, failures, order, goroutines, `-race`).
 - [x] **T06 🟢 `pipeline`: sequential and pipeline modes.** Verify: `go test -race -cover ./pipeline/` ≥ 90 %.
-- [ ] **T07 🔴🟢 `pipeline`: workers mode.** ✂︎ first cut.
+- [x] **T07 🔴🟢 `pipeline`: workers mode.** ✂︎ first cut.
 - [ ] **T08 🤖 Benchmarks** (`BenchmarkRun`, `BenchmarkRunBundled`; images/s; allocations).
 
 ## Phase 2 — The program

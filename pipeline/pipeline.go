@@ -128,7 +128,7 @@ func schedulerFor(mode Mode) (scheduler, error) {
 	case Pipeline:
 		return runPipeline, nil
 	case Workers:
-		return nil, errors.New("workers mode is not implemented yet")
+		return runWorkers, nil
 	}
 	return nil, fmt.Errorf("unknown mode %v", mode)
 }
