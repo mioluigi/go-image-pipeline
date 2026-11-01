@@ -47,7 +47,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 - [ ] **T14 👤 Build all three; double-click the `.app`.**
 
 ## Phase 5 — Documentation and submission
-- [ ] **T15 🤖 README** (what changed from CODEHEIM; tables by script; the ceiling explained; recommendation;
+- [x] **T15 🤖 README** (what changed from CODEHEIM; tables by script; the ceiling explained; recommendation;
   **GenAI Tools** section for Luis to confirm).
 - [ ] **T16 👤 AI dialogs.** Export this Claude conversation and the Gemini reviews to `docs/ai-dialogs/` (PDF).
 - [ ] **T17 👤 Gemini review of the repository** against the rubric; Claude triages into `docs/reviews/002-…`.

@@ -149,7 +149,79 @@ removed, and others) — 20 of 20 behavioural mutations caught; details in the c
 these tables; `scripts/readme.sh` copies them here. **No number below was typed by hand.**
 
 <!-- tables:start -->
-*(Tables appear here after `scripts/measure.sh` has been run on the Mac — task T12.)*
+Measured on **Apple M1 Max · 64 GB · macOS 27.0.1**, 10 CPUs, Go 1.27.2, 2026-11-01 17:14 EST.
+
+**Headline** (whole program, 32 photos, median of 5 runs):
+
+- **Worker pool: ×3.81 faster** than sequential; **pipeline: ×1.38**.
+- **Pipeline ceiling ×1.45**, set by its slowest stage (load, 69 % of the work) — not by the 10 CPUs.
+- **Peak memory:** sequential 159 MB, pipeline 205 MB, worker pool 974 MB (×6.1 sequential).
+- **Robustness cost:** on CODEHEIM's four images the original took 131 ms and our pipeline mode 135 ms.
+
+#### 1. The original program, unchanged (CODEHEIM commit `40f5842`)
+
+Built and ran with exit code 0, printing `Success!` 4 times. Same four CODEHEIM images, whole program, median of 5 runs:
+
+| Program | Time (ms) | Peak memory (MB) |
+|---|---:|---:|
+| original | 131 | 42 |
+| ours-sequential | 195 | 42 |
+| ours-pipeline | 135 | 43 |
+| ours-workers | 83 | 67 |
+
+#### 2. Throughput benchmarks — synthetic 1536 × 1024 photos (median of the runs)
+
+| Mode | Images | Time per run (ms) | Images per second | Speed-up vs sequential | Memory allocated per run (MB) | Allocations per run |
+|---|---:|---:|---:|---:|---:|---:|
+| sequential | 4 | 174 | 22.9 | ×1.00 | 40 | 666316 |
+| sequential | 16 | 666 | 24.0 | ×1.00 | 159 | 2665216 |
+| sequential | 64 | 2655 | 24.1 | ×1.00 | 635 | 10660846 |
+| pipeline | 4 | 126 | 31.7 | ×1.38 | 40 | 666317 |
+| pipeline | 16 | 449 | 35.6 | ×1.48 | 159 | 2665223 |
+| pipeline | 64 | 1761 | 36.3 | ×1.51 | 635 | 10660849 |
+| workers | 4 | 58 | 68.8 | ×3.00 | 40 | 666321 |
+| workers | 16 | 157 | 102.1 | ×4.25 | 159 | 2665229 |
+| workers | 64 | 553 | 115.7 | ×4.80 | 635 | 10660853 |
+
+#### 3. Throughput benchmarks — the bundled photos
+
+| Mode | Images | Time per run (ms) | Images per second | Speed-up vs sequential | Memory allocated per run (MB) | Allocations per run |
+|---|---:|---:|---:|---:|---:|---:|
+| sequential | 4 | 706 | 5.7 | ×1.00 | 234 | 751193 |
+| pipeline | 4 | 554 | 7.2 | ×1.27 | 234 | 751197 |
+| workers | 4 | 249 | 16.1 | ×2.83 | 234 | 751198 |
+
+#### 4. Where the time goes — sequential mode, 32 images
+
+| Stage | Time (ms) | Share |
+|---|---:|---:|
+| load | 3946 | 69 % |
+| resize | 1579 | 28 % |
+| grayscale | 121 | 2 % |
+| save | 89 | 2 % |
+| **total** | **5734** | |
+
+**Ceiling for the one-goroutine-per-stage pipeline:** total ÷ slowest stage (load) = 5734 ÷ 3946 = **×1.45**, however many CPUs.
+
+#### 5. Whole program — median of 5 runs (start-up, reading and writing files included)
+
+| Mode | Images | Time (ms) | Speed-up vs sequential | Peak memory (MB) |
+|---|---:|---:|---:|---:|
+| sequential | 4 | 724 | ×1.00 | 172 |
+| sequential | 32 | 5622 | ×1.00 | 159 |
+| pipeline | 4 | 570 | ×1.27 | 173 |
+| pipeline | 32 | 4083 | ×1.38 | 205 |
+| workers | 4 | 265 | ×2.73 | 255 |
+| workers | 32 | 1474 | ×3.81 | 974 |
+
+#### 6. Test coverage (`go test -race -cover ./...`)
+
+| Package | Coverage |
+|---|---:|
+| program (main) | 96.1% |
+| cmd/measure | 93.0% |
+| imageprocessing | 100.0% |
+| pipeline | 100.0% |
 <!-- tables:end -->
 
 To reproduce (about ten minutes; plugged in, other programs closed):
@@ -173,29 +245,41 @@ pipeline every time the **slowest** stage finishes one, so throughput can never 
 
 > speed-up ≤ (total time of all stages) ÷ (time of the slowest stage)
 
-Resize is the slowest stage by far (table 4), so the pipeline's ceiling is computed there from measured stage
-times. **More CPUs do not raise it**: the pipeline has only four goroutines, and three of them spend most of
-their time waiting for resize. The worker pool has no such ceiling — each worker does all the stages for its
-own photo — so it keeps scaling until the CPUs (or memory and disk) run out. The price is memory: a pool holds
-one full-size decoded photo per worker at once (table 5, peak memory).
+**Which stage is slowest depends on the data.** On CODEHEIM's 1536 × 1536 images the spike found resize
+slowest; on the bundled 12-megapixel phone photos, **loading (JPEG decoding) is** (table 4). The ceiling in the
+headline is computed from these measured stage times, and the pipeline's measured speed-up (table 5) stays
+just under it, as the formula predicts ([spike addendum](docs/spikes/001-original-pipeline.md)).
+
+**More CPUs do not raise the ceiling**: the pipeline has only four goroutines, and the three fast stages spend
+most of their time waiting for the slow one. The worker pool has no such ceiling — each worker does all four
+stages for its own photo — so it keeps scaling with cores. It does not reach one-times-the-core-count, which is
+expected: the M1 Max's 10 cores are 8 performance and 2 efficiency cores, and every worker also competes for
+memory bandwidth and the garbage collector. The price is memory: the pool holds one full-size decoded photo per
+worker at once (headline, peak memory).
 
 ---
 
 ## Recommendation to management
 
-<!-- Final wording after T12, from the measured tables. -->
+Measured figures are in the headline above the results tables; the points below rest on them.
 
-1. **Use Go concurrency for this kind of work — it pays.** Image conversion (and most per-record data
-   transformation) is independent work per item, which goroutines parallelize with little code.
-2. **Prefer a worker pool over a stage-per-goroutine pipeline** when items are independent. The pipeline is
-   capped by its slowest stage, however many CPUs the server has; the pool scales with cores.
-3. **Use stages when they are genuinely different resources**, e.g. one stage waits on the network or disk and
-   another uses the CPU, or a stage must run in order. Then size each stage separately (more goroutines for the
-   slow stage) instead of one each.
-4. **Budget memory with the worker count.** Each worker holds a full photo in memory; cap the pool to fit the
-   machine.
-5. **Make the concurrent version prove itself:** identical output to a sequential run, the race detector, and a
-   test that no goroutine is left behind — the three checks this project uses.
+1. **Yes — Go concurrency cuts processing time substantially for this kind of work.** The worker pool was the
+   fastest mode in every measurement, and its advantage grew with the number of photos. Per-item transformation
+   (images here; records, files or documents in general) is independent work that goroutines spread across cores
+   with little code.
+2. **Choose a worker pool, not one goroutine per stage, when items are independent.** The stage pipeline
+   reproduced from the tutorial gained far less, and its limit is set by its slowest stage, not by the server's
+   CPU count — so buying bigger machines would not help it.
+3. **Do not balance a pipeline once and forget it.** Its slowest stage changed with the input (resize for the
+   tutorial's images, decoding for full-size phone photos). A pool does not depend on that balance. Use stages
+   only where they map to genuinely different resources (one stage waits on network or disk, another computes) or
+   order matters — and then give the slow stage more goroutines.
+4. **Budget memory alongside speed.** The pool's peak memory was several times the sequential run's, because
+   each worker holds a full decoded image. Cap the worker count to the machine's memory, not just its cores.
+5. **Robustness is affordable.** Reporting failures per item, never overwriting inputs, and keeping results in
+   order cost no measurable time against the original.
+6. **Make concurrent code prove itself before trusting its speed:** identical output to a sequential run, the
+   race detector, and a test that no goroutine is left behind — the three gates this project used.
 
 ---
 
@@ -222,6 +306,10 @@ executable works on its own.
   it. The bundled photos were exported upright from Photos; a sideways phone photo may come out sideways.
 - Timings come from one Mac; other machines will differ, especially in the worker pool's speed-up (it depends on
   CPU count).
+- The four bundled photos are all landscape (spec decision Q2 asked for a portrait too; see
+  [`docs/decisions.md`](docs/decisions.md)). Portrait shapes are covered by the unit tests.
+- Most allocations (tables 2–3) come from CODEHEIM's per-pixel grayscale loop, kept unchanged because it is part of
+  the measured workload; about one allocation per output pixel, which converting pixels without the `color.Color` interface would avoid.
 - Only JPEG and PNG input; output is always JPEG.
 
 ---

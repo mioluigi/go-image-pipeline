@@ -79,3 +79,14 @@ Median of 7 runs (file reading and writing excluded, so only processing is timed
    version from 2018) but works and is what the original uses. It already supports keeping the aspect ratio:
    `Resize` with 0 for one dimension, or `Thumbnail(maxW, maxH, …)` to fit inside a box. Keeping it keeps the
    replication faithful.
+
+## Addendum (T12, 2026-11-01) — the bottleneck depends on the photos
+
+On Luis's Mac with his own **12-megapixel** photos (4032 × 3024), the stage shares changed
+(`results/stages-32.txt`, README table 4): **load (JPEG decoding) became the slowest stage**, ahead of resize.
+Each has about 5 times the pixels of CODEHEIM's 1536 × 1536 images (12.2 versus 2.4 million), and on these photos decoding took the larger share.
+
+What held: the ceiling formula (total ÷ slowest stage) predicted the pipeline's measured speed-up closely,
+and the pipeline stayed below it on a 10-CPU machine. What changed: *which* stage sets the ceiling. Lesson for
+the recommendation: a stage-per-goroutine design balanced for one kind of input can be unbalanced for another,
+while a worker pool does not depend on the balance.

@@ -1,5 +1,12 @@
 Measured on **Apple M1 Max · 64 GB · macOS 27.0.1**, 10 CPUs, Go 1.27.2, 2026-11-01 17:14 EST.
 
+**Headline** (whole program, 32 photos, median of 5 runs):
+
+- **Worker pool: ×3.81 faster** than sequential; **pipeline: ×1.38**.
+- **Pipeline ceiling ×1.45**, set by its slowest stage (load, 69 % of the work) — not by the 10 CPUs.
+- **Peak memory:** sequential 159 MB, pipeline 205 MB, worker pool 974 MB (×6.1 sequential).
+- **Robustness cost:** on CODEHEIM's four images the original took 131 ms and our pipeline mode 135 ms.
+
 #### 1. The original program, unchanged (CODEHEIM commit `40f5842`)
 
 Built and ran with exit code 0, printing `Success!` 4 times. Same four CODEHEIM images, whole program, median of 5 runs:

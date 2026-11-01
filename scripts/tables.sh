@@ -122,6 +122,24 @@ FILENAME == "whole-program.txt" && /^wholeprogram/ {
 END {
   printf "Measured on **%s**, %s CPUs, Go %s, %s.\n\n", machine["machine"], machine["cpus"], substr(machine["go"], 3), machine["measured"]
 
+  # Headline: the numbers the recommendation rests on, computed here so the
+  # README never types them by hand.
+  total = stage["load"] + stage["resize"] + stage["grayscale"] + stage["save"]
+  slowest = "load"
+  for (name in stage) if (stage[name] > stage[slowest]) slowest = name
+  largest = 0
+  for (i = 1; i <= wholeCount; i++) { split(wholeRows[i], parts, "-"); if (parts[2] + 0 > largest) largest = parts[2] + 0 }
+  print "**Headline** (whole program, " largest " photos, median of " wholeRuns " runs):\n"
+  printf "- **Worker pool: ×%.2f faster** than sequential; **pipeline: ×%.2f**.\n", \
+    wholeWall["sequential-" largest] / wholeWall["workers-" largest], wholeWall["sequential-" largest] / wholeWall["pipeline-" largest]
+  printf "- **Pipeline ceiling ×%.2f**, set by its slowest stage (%s, %.0f %% of the work) — not by the %s CPUs.\n", \
+    total / stage[slowest], slowest, 100 * stage[slowest] / total, machine["cpus"]
+  printf "- **Peak memory:** sequential %.0f MB, pipeline %.0f MB, worker pool %.0f MB (×%.1f sequential).\n", \
+    wholeMemory["sequential-" largest], wholeMemory["pipeline-" largest], wholeMemory["workers-" largest], \
+    wholeMemory["workers-" largest] / wholeMemory["sequential-" largest]
+  printf "- **Robustness cost:** on CODEHEIM'"'"'s four images the original took %.0f ms and our pipeline mode %.0f ms.\n\n", \
+    originalWall["original"], originalWall["ours-pipeline"]
+
   print "#### 1. The original program, unchanged (CODEHEIM commit `40f5842`)\n"
   printf "Built and ran with exit code %s, printing `Success!` %d times. Same four CODEHEIM images, whole program, median of %d runs:\n\n", originalExit, originalSuccesses, wholeRuns
   print "| Program | Time (ms) | Peak memory (MB) |"
