@@ -103,7 +103,7 @@ Results are printed in input order in every mode. Logs (timestamped, `log/slog`)
 | `main.go`, `report.go`, `images.go` | The program: flags and validation, the printed report, the built-in photos (embedded with `go:embed`, so executables run on their own). |
 | `imageprocessing/` | **Reusable package**, one image at a time: `Decode` (JPEG, PNG), `FitSize`/`Fit` (resize keeping the ratio), `Grayscale`, `Encode`. Reads and writes `io.Reader`/`io.Writer`; never touches the file system. |
 | `pipeline/` | **Reusable package**, many images: `Run` in one of the three modes, results in input order, per-stage times; reads from any `fs.FS`. |
-| `images/` | Four of the author's own photos (replacing CODEHEIM's), built into the program. |
+| `images/` | Four of the author's own photos, three landscape and one portrait (replacing CODEHEIM's), built into the program. Camera metadata (including location) was removed from the files. |
 | `cmd/measure/` | Runs whole programs repeatedly and reports median wall time and peak memory (reused from Weeks 4–5). |
 | `scripts/` | `run-original.sh` (CODEHEIM's program, unchanged), `measure.sh` (every measurement), `tables.sh` + `readme.sh` (the tables below), `build.sh` + `build-macos-app.sh` (executables). |
 | `results/` | Raw measured output from the author's Mac; the tables below are generated from it. |
@@ -306,8 +306,6 @@ executable works on its own.
   it. The bundled photos were exported upright from Photos; a sideways phone photo may come out sideways.
 - Timings come from one Mac; other machines will differ, especially in the worker pool's speed-up (it depends on
   CPU count).
-- The four bundled photos are all landscape (spec decision Q2 asked for a portrait too; see
-  [`docs/decisions.md`](docs/decisions.md)). Portrait shapes are covered by the unit tests.
 - Most allocations (tables 2–3) come from CODEHEIM's per-pixel grayscale loop, kept unchanged because it is part of
   the measured workload; about one allocation per output pixel, which converting pixels without the `color.Color` interface would avoid.
 - Only JPEG and PNG input; output is always JPEG.
