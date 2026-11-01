@@ -2,11 +2,11 @@
 
 | Field | Value |
 |---|---|
-| Status | **DRAFT v1 — 2026-11-01** (awaiting Gemini review and Luis's decisions in section 11) |
+| Status | **DRAFT v2 — 2026-11-01** (after Gemini review: `docs/reviews/001-spec-review.md`; awaiting Luis's decisions in section 11) |
 | Owner | Luis Varela |
 | Course deliverable | Week 6 Assignment: Data Pipelines with Concurrency (100 pts) |
 | Governing rules | `docs/constitution.md` · requirements: `docs/assignment-and-rubric.md` |
-| Evidence so far | `docs/spikes/001-original-pipeline.md` |
+| Evidence so far | `docs/spikes/001-original-pipeline.md` · review `docs/reviews/001-spec-review.md` |
 
 > **Spec rule:** this document says **what** and **why**. **How** belongs in `plan.md`.
 
@@ -48,6 +48,8 @@ work is divided matters as much as using goroutines at all**.
 | FR-4 | **Error checking, input:** missing file, unreadable file, unsupported or corrupt format each produce an error naming the file. Accepted input formats: Q6. |
 | FR-5 | **Error checking, output:** the output folder is created if missing; an unwritable folder or failed encode is reported by file name. |
 | FR-6 | **A failure travels with its image.** One failed image is reported and does not stop or block the others; the run ends with a summary (succeeded / failed) and a non-zero exit code if any failed. No goroutine is left blocked (Constitution 2.8). |
+| FR-6a | **No goroutine left behind.** After every run in every mode — including runs where images fail — the number of running goroutines returns to its value before the run, checked by a test. *(Review 001 #4)* |
+| FR-6b | **Results in input order.** Concurrent modes may finish images in any order; results and messages are reported in the order of the input file names, so every mode's output reads the same. *(Review 001 #4)* |
 | FR-7 | **Inputs are never overwritten.** Outputs go to a separate output folder; the program refuses to run if the output folder is the input folder. |
 | FR-8 | **Modes.** The same stage functions run in each mode chosen in Q3: at minimum **sequential** (no goroutines) and **pipeline** (the original one-goroutine-per-stage design). |
 | FR-9 | **Same answer in every mode.** Every mode produces pixel-identical output images to the sequential mode on the same input, checked by a test (Constitution 1.1). |
@@ -55,7 +57,8 @@ work is divided matters as much as using goroutines at all**.
 | FR-11 | **Benchmarks** with `testing.B` for each mode, reporting time per run, **images per second**, and allocations, on synthetic images (fixed seed) and on the bundled images, for several image counts. |
 | FR-12 | **Stage timing:** the time spent in each stage is reported, so the bottleneck is shown by measurement, not assumed. |
 | FR-13 | **Logging:** timestamped `log/slog` logs to standard error; `-verbose` shows per-image detail. |
-| FR-14 | **Program:** runs with **no arguments** on the bundled images in the default mode; flags choose the mode, input folder, output folder, and target size (Q7). Invalid flag values produce a clear message and exit code 2. |
+| FR-14 | **Program:** runs with **no arguments** on the bundled images in the default mode; the flags and defaults decided in Q7 choose the mode, input folder, output folder, target size, and worker count. Invalid flag values (unknown mode, size or worker count out of range, missing or empty input folder, output folder equal to input folder) produce a clear message before any image is processed. |
+| FR-14a | **Exit codes:** **0** every image saved; **1** at least one image failed (the others were saved, FR-6); **2** invalid usage, nothing processed. *(Review 001 #2)* |
 | FR-15 | **Whole-program metrics:** wall time and peak memory for each mode, measured from outside the program the same way (the Week 4–5 `cmd/measure` approach). |
 | FR-16 | **README** contains: purpose; what changed from CODEHEIM; roles of programs and data; build, run, test and benchmark instructions; results tables; the explanation of the speed-up limit; the **recommendation to management**; and a **GenAI Tools** section. |
 | FR-17 | **AI dialogs** (Claude, Gemini) are included in the repository as plain text or PDF. |
@@ -71,7 +74,13 @@ Spike 001 gives the expected shape of the timings (2-CPU workspace, CODEHEIM's i
 | Worker pool speed-up (2 workers) | ×1.63–×1.73 | Grows with cores, if Q3 includes it |
 | Bottleneck stage | Resize (Lanczos3) | Same, unless Q4's sizes change it |
 
-These are hypotheses to confirm or refute on the Mac, not targets.
+These are hypotheses to confirm or refute on the Mac, not targets. *(Review 001 #5)*
+
+- **The pipeline's ceiling is architectural:** it equals total stage time ÷ slowest stage time and does
+  not rise with more CPUs. It **will be recomputed** from the Mac's measured stage times (FR-12), because our
+  images and the aspect-preserving resize (Q4) change each stage's share.
+- **The worker pool's speed-up depends on the hardware:** it is expected to grow with the number of cores
+  until another limit (memory bandwidth, disk) takes over. The README reports the core count with the results.
 
 ## 6. Key findings that shape the plan ⚠️ (from Spike 001)
 
@@ -99,7 +108,7 @@ These are hypotheses to confirm or refute on the Mac, not targets.
 ## 8. Acceptance criteria (definition of done)
 
 - [ ] AC-1 The original program's build-and-run output is recorded (FR-1).
-- [ ] AC-2 `go test ./...` and `go test -race ./...` pass, including synthetic known-answer tests and every FR-4/FR-5 error case.
+- [ ] AC-2 `go test ./...` and `go test -race ./...` pass, including synthetic known-answer tests, every FR-4/FR-5 error case, and the FR-6a goroutine check. `go test -cover` on the reusable packages reports ≥ 90 % for each (NFR-2); its output is saved in `results/`. *(Review 001 #3)*
 - [ ] AC-3 Every mode passes the pixel-identical check against sequential (FR-9).
 - [ ] AC-4 Benchmarks report time, images per second, and allocations for each mode and several image counts (FR-11).
 - [ ] AC-5 Stage timings, CPU and memory profiles are saved and summarized (FR-12, NFR-4).
@@ -116,15 +125,39 @@ These are hypotheses to confirm or refute on the Mac, not targets.
 |---|---|
 | Coding rules, organization, aesthetics | NFR-1, Constitution Art. 2 |
 | Testing and software metrics | FR-9, FR-11–FR-13, FR-15, NFR-2–NFR-4, AC-2–AC-6 |
-| Design and development | FR-3, FR-6, FR-8, FR-10, NFR-5 |
+| Design and development | FR-3, FR-6, FR-6a, FR-6b, FR-8, FR-10, NFR-5 |
 | Documentation | FR-1, FR-16, FR-17, NFR-6, NFR-7, AC-9, AC-10 |
-| Application | FR-7, FR-14, AC-7, AC-8 |
+| Application | FR-7, FR-14, FR-14a, AC-7, AC-8 |
+
+## 9a. Assignment-step traceability *(Review 001 #1)*
+
+| Assignment step | Satisfied by |
+|---|---|
+| 1 Clone the repository | FR-1, Q1 |
+| 2 Build and run in original form | FR-1, AC-1 |
+| 3 Error checking for input and output | FR-4, FR-5, FR-6, FR-6a, FR-7, AC-2, AC-7 |
+| 4 Replace the four images | FR-2, Q2 |
+| 5 Unit tests | FR-9, NFR-2, NFR-3, AC-2, AC-3 |
+| 6 Benchmarks; run with and without goroutines | FR-8, FR-11, FR-12, AC-4 |
+| 7 Additional modifications | Worker pool (Q3), PNG input (Q6), never overwrite inputs (FR-7), ordered results (FR-6b), command-line flags (FR-14), stage timing (FR-12), executables (AC-8) |
+| 8 Build, test, run with and without goroutines; compare | FR-8, FR-12, FR-15, AC-3–AC-6, AC-9 |
+| 9 Complete README | FR-16, AC-9 |
+| 10 (Optional) preserve aspect ratio | FR-10, Q4 |
 
 ## 10. Out of scope
 
 - Applying EXIF orientation (unless Q2 changes this); other image formats beyond Q6; GPU processing.
 - A network service or a graphical interface.
 - Replacing the resize algorithm or library (it is the measured workload; changing it would change the comparison).
+
+## 10a. Cut order if time runs short *(Review 001 #7)*
+
+Cut in this order, recording each cut in `docs/decisions.md` and the README's limitations:
+
+1. **Worker-pool mode** (Q3) — the README still explains the ceiling from measured stage times.
+2. **The outside-the-program measurement tool** (FR-15) — replaced by `/usr/bin/time -l` on the Mac.
+
+Not cut: error handling, tests, benchmarks, the sequential-versus-pipeline comparison, executables, README.
 
 ## 11. Decisions — **for Luis** (recommendation in bold)
 
