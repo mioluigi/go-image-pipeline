@@ -15,6 +15,12 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p dist
 
+# The program embeds images/, so Go cannot build it without at least one photo there.
+if ! ls images/*.jpg images/*.jpeg images/*.png images/*.JPG images/*.JPEG images/*.PNG >/dev/null 2>&1; then
+  echo "build.sh: images/ has no .jpg, .jpeg or .png photos; add them first (task T02)" >&2
+  exit 2
+fi
+
 go build -o dist/go-image-pipeline .
 echo "Built dist/go-image-pipeline"
 

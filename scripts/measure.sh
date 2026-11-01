@@ -32,6 +32,12 @@ for setting in COUNT RUNS; do
   fi
 done
 
+# The program embeds images/, so Go cannot build it without at least one photo there.
+if ! ls images/*.jpg images/*.jpeg images/*.png images/*.JPG images/*.JPEG images/*.PNG >/dev/null 2>&1; then
+  echo "measure.sh: images/ has no .jpg, .jpeg or .png photos; add them first (task T02)" >&2
+  exit 2
+fi
+
 step() { echo "measure.sh: $*" >&2; }
 trap 'echo "measure.sh: STOPPED because the step above failed; results/ is incomplete, so do not run tables.sh" >&2' ERR
 
