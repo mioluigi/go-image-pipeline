@@ -43,7 +43,7 @@ it complete. If time runs short, cut in the order of spec §10a (✂︎ marks).
 - [ ] **T12 👤 Run `scripts/measure.sh` on the Mac** (plugged in, apps closed); commit `results/`.
 
 ## Phase 4 — Executables
-- [ ] **T13 🤖 `scripts/build.sh`, `scripts/build-macos-app.sh`.**
+- [x] **T13 🤖 `scripts/build.sh`, `scripts/build-macos-app.sh`.**
 - [ ] **T14 👤 Build all three; double-click the `.app`.**
 
 ## Phase 5 — Documentation and submission

@@ -141,7 +141,7 @@ Mutation checks (Constitution 3.1) on: the `Err` pass-through, the index placeme
 
 `scripts/build.sh` → `dist/image-pipeline` (this machine), `dist/image-pipeline.exe` (Windows amd64), and on an
 Apple Silicon Mac `dist/ImagePipeline.app` (Week 5's Terminal-wrapper script, adapted). No CGo is involved, so
-every target cross-compiles; images are embedded, so each executable runs alone.
+every target cross-compiles; images are embedded, so each executable runs alone. *(Decision log: the `.app` is built on any computer, and its window runs all three modes.)*
 
 ## 9. Risks and mitigations
 
